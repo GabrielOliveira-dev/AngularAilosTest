@@ -1,0 +1,21 @@
+{
+    "data": [{
+        "id": 1,
+        "name": "Gabriel Tavares Oliveira",
+        "cpf": "11122233344",
+        "cpfSituation": "Regular",
+        "accountSituation": [
+            {
+                "accountType": "Conta Aplicação",
+                "numberAccount": "5579324",
+                "cooperativeName": "Cooperativa Viacredi"
+            },
+            {
+                "accountType": "Conta Corrente",
+                "numberAccount": "7784618",
+                "cooperativeName": "Cooperativa Viacredi"
+            }
+        ]
+    
+    }]
+} 

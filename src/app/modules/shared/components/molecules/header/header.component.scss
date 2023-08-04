@@ -1,0 +1,25 @@
+
+.header__container--default{
+  width: calc(100% - var(--menu-side-size));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--background-base);
+  margin-left:calc(var(--menu-side-size));
+  padding: 2rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+}
+
+.header__title--bold{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header__subtitle--disable{
+  color:#a1a1a1
+}
+
+
+.container__text{
+  row-gap: 1rem;
+}

@@ -1,0 +1,127 @@
+
+
+.card__body--default {
+    width: 100%;
+    display: flex;    
+    justify-content: start;
+    align-items: center;
+    margin-top: 31px;
+
+    .card__container--default {
+        max-width: 230px;
+        width: 100%;        
+        height: 142px;     
+        margin-right: 10px;
+        padding: 20px;           
+        border-radius: 2px;
+        display: flex;        
+        flex-direction: column;
+        background-color: var(--background-base);   
+        box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.1);
+
+        .card__info--employee {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .card__info--container {
+                
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                align-items: center;
+                margin: 8px 0 0;
+
+                .icon {
+
+                    margin: 11px 18px 0 2px;
+
+                    &.color-green {
+
+                        svg {
+
+                            fill: #00C246;
+                        }
+
+                    }
+                }
+
+                .card__info__text--container {
+
+                    display: flex;
+                    flex-direction: column;
+
+                    .card__info__text__container--title {
+
+                        margin: 10px 0 0;
+                        font-size: 11px;
+                        line-height: 17px;
+                        color: #a5a4a4;
+                    }
+
+                    .card__info__text__container--value {
+
+                        margin: 0;
+                        font-size: 14px;
+                        line-height: 17px;
+                    }
+                }
+            }            
+        }
+
+        .card__texts--default {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+    
+        .card__texts--title {
+            
+            h3 {
+                
+                margin: 2px 0 0;            
+                font: 600 14px Roboto, "Helvetica Neue", sans-serif;
+            }
+    
+            p {
+    
+                margin: 0;
+                font: 600 14px Roboto, "Helvetica Neue", sans-serif;
+            }
+    
+        }
+    
+        .card__texts--subtitle {
+            font-size: 10px;
+            
+            p {
+                color: #a5a4a4;
+                margin: 0;
+                font: 400 14px Roboto, "Helvetica Neue", sans-serif;
+            }
+        }
+
+        .card__info--button {
+            
+            margin-top: 25px;
+
+            button {
+                cursor: pointer;
+                font-weight: 600;
+                color: #165C7D;
+                background: none;
+                border: none;
+                font-size: 15px;
+            }
+        }
+    }  
+    
+    
+
+    // .card__texts--dynamic {
+    //     display: flex;
+    //     flex-direction: column;
+    //     flex: 1;
+    // }
+}
