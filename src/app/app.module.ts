@@ -7,6 +7,9 @@ import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewEmployeeAcceptanceModule } from './modules/new-employee-acceptance/new-employee-acceptance.module';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxMaskModule } from 'ngx-mask';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot({
       maxOpened: 3,
       timeOut: 1000
-    })
+    }),
+    NgxMaskModule.forRoot({})
   ],
   providers: [],
   bootstrap: [AppComponent],

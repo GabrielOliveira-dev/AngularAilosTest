@@ -1,6 +1,6 @@
 <div class="container">
     <ailos-steper></ailos-steper>
-    <ailos-new-employee-input (cpfInput)="resCpfInput($event)"></ailos-new-employee-input>
+    <ailos-new-employee-input (cpfInput)="resCpfInput($event)" [cpfExist]="cpfExist"></ailos-new-employee-input>
     <ailos-new-employee-cards *ngIf="employeeInputData" [employeeInputData]="employeeInputData"></ailos-new-employee-cards>
 </div>
 

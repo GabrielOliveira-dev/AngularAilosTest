@@ -14,7 +14,7 @@ export class NewEmplAcceptanceComponent implements OnInit {
 
 mockData$!: Observable<EmployeeModel[]>
 employeeInputData!: EmployeeModel;
-cpfNotFind!: string
+cpfExist: boolean = false;
 
 
 
@@ -29,12 +29,14 @@ cpfNotFind!: string
     this.newEmplService.getEmployee$(res).subscribe({
       next: (data) => {
         if(data) {
-          this.employeeInputData = data
+          this.cpfExist = true;
+          this.employeeInputData = data;
         }
         if( data == undefined) {
           this.toastr.error("CPF não encontrado")
           throw new Error("CPF não encontrado")
-        }console.log(data)
+          
+        }console.log(data) 
       },
       error: (error) => { console.log(error)}
     })

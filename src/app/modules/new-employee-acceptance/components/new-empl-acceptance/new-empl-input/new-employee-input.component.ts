@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
@@ -10,6 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class NewEmployeeInputComponent implements OnInit {
 
   newEmplForm!: FormGroup
+  @Input() cpfExist!: boolean;
 
 
   constructor(private fb: FormBuilder) { }
@@ -21,8 +22,6 @@ export class NewEmployeeInputComponent implements OnInit {
       cpf: [null, [Validators.required]]
     })
   }
-
-  
 
   onSubmit() {
     if(this.newEmplForm.valid) {

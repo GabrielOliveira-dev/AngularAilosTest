@@ -12,6 +12,7 @@ import { AvatarPhotoComponent } from './components/atoms/avatar-photo/avatar-pho
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { CardComponent } from './components/atoms/card/card.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CardComponent } from './components/atoms/card/card.component';
     MatFormFieldModule,
     MatIconModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    NgxMaskModule.forChild()
   ],
   exports: [
     HeaderComponent,

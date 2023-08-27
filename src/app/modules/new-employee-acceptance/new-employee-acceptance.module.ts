@@ -9,6 +9,7 @@ import { NewEmployeeCardsComponent } from './components/new-empl-acceptance/new-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';
     SharedModule, 
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    NgxMaskModule.forChild()
   ],
 })
 export class NewEmployeeAcceptanceModule {}
