@@ -35,14 +35,18 @@
 
                     margin: 11px 18px 0 2px;
 
-                    &.color-green {
+                }
 
-                        svg {
+                .color-green {
 
-                            fill: #00C246;
-                        }
+                    color: rgb(6, 214, 6); 
+                    
+                }
 
-                    }
+                .color-grey {
+
+                    color: rgb(161, 158, 158); 
+                    
                 }
 
                 .card__info__text--container {

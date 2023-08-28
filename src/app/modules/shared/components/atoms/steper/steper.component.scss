@@ -7,7 +7,13 @@
   margin-top: 16px;
 }
 
-// .container__stepper {
-//   background-color: var(--blue-clear);
-// }
+.container__stepper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.mat-step-label {
+  margin-right: 40px;
+}
 

@@ -1,24 +1,27 @@
-<div class="container__stepper">
-  <mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Início</ng-template>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" >
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Documentos</ng-template>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>Dados Cadastrais</ng-template>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="fourthFormGroup">
-      <form [formGroup]="fourthFormGroup">
-        <ng-template matStepLabel>Admissão</ng-template>
-      </form>
-    </mat-step>
-  </mat-stepper>
+<div class="container__default">
+  <div class="container__stepper">
+    <mat-stepper labelPosition="bottom" [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Início</ng-template>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" >
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Documentos</ng-template>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Dados Cadastrais</ng-template>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="fourthFormGroup">
+        <form [formGroup]="fourthFormGroup">
+          <ng-template matStepLabel>Admissão</ng-template>
+        </form>
+      </mat-step>
+    </mat-stepper>
+  </div>
+  
 </div>
