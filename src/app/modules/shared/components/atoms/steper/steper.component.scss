@@ -1,3 +1,7 @@
+:host ::ng-deep .mat-step-header  {
+  width: 180px;
+}
+
 .mat-stepper-horizontal {
   margin-top: 8px;
   background-color: var(--blue-clear);
@@ -16,4 +20,12 @@
 .mat-step-label {
   margin-right: 40px;
 }
+
+:host ::ng-deep .mat-horizontal-content-container {
+  overflow: hidden;
+  padding: 0 0!important;
+}
+
+
+
 

@@ -84,7 +84,10 @@ table {
   --blue-ocean: #1b5c7c;
   --blue-clear: #e6eef1;
   --menu-side-size: 100px;
+  --color-default: #125D79
 }
+
+
 
 
 .global__flex--column{
@@ -94,4 +97,5 @@ table {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden
+	; }

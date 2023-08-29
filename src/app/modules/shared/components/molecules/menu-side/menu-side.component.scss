@@ -6,20 +6,19 @@
   position: absolute;
   left: 0;
   top:0;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-}
-
-.menuside__logo{
-  padding: 1rem;
 
 }
+
 
 mat-icon {
   color: #fff;
-  font-size: 36px;
+  font-size: 30px;
+  margin-bottom: 30px;
+  width: 30px;
+  height: 30px;
+
 }
 
 .menuside__icons{
@@ -27,4 +26,7 @@ mat-icon {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
+
+

@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { CardComponent } from './components/atoms/card/card.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { FooterComponent } from './components/molecules/footer/footer.component';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { NgxMaskModule } from 'ngx-mask';
     SteperComponent,
     AvatarPhotoComponent,
     CardComponent,
-    
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +42,8 @@ import { NgxMaskModule } from 'ngx-mask';
     MenuSideComponent,
     MainTemplateComponent,
     SteperComponent,
-    CardComponent
+    CardComponent,
+    FooterComponent
   ],
 })
 export class SharedModule {}
