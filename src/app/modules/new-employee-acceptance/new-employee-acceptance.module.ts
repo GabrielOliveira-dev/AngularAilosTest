@@ -10,13 +10,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { NgxMaskModule } from 'ngx-mask';
+import { FooterComponent } from '../shared/components/molecules/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     NewEmplAcceptanceComponent,
     NewEmployeeInputComponent, 
-    NewEmployeeCardsComponent
+    NewEmployeeCardsComponent,
+    
   ],
   imports: [
     CommonModule, 

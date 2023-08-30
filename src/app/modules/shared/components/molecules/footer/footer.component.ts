@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ailos-footer',
@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  
+  newAdmissionBoolean!: boolean;
+
+
+  @Input() set newAdmission(val: boolean) {
+    this.newAdmissionBoolean = val
+  }
+
+
 
   constructor() { }
 
   ngOnInit() {
   }
+
+
 
 }

@@ -1,7 +1,12 @@
 <div class="footer__container--default">
+  <div *ngIf="newAdmissionBoolean" class="footer__container--button-admission">
+    <button class="button--admission" 
+        mat-button color="primary" type="submit">Iniciar nova admissão
+    </button>
+  </div>
   <div class="footer__container--button-help">
-    <button class="button--save" 
+    <button class="button--help" 
         mat-button color="primary" type="submit">Dicas para admissão
     </button>
-</div>
+  </div>
 </div>

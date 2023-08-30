@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NewEmployeeService } from '../../services/new-employee.service';
 import { Observable } from 'rxjs';
 import { EmployeeModel } from 'src/app/modules/models/interfaces/IEmployee';
@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NewEmplAcceptanceComponent implements OnInit {
 
+newAdmission!: boolean;
 mockData$!: Observable<EmployeeModel[]>
 employeeInputData!: EmployeeModel;
 cpfExist: boolean = false;
@@ -30,6 +31,7 @@ cpfExist: boolean = false;
       next: (data) => {
         if(data) {
           this.cpfExist = true;
+          this.newAdmission = true;
           this.employeeInputData = data;
         }
         if( data == undefined) {
