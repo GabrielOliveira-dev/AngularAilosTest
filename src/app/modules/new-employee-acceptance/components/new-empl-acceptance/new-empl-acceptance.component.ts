@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NewEmployeeService } from '../../services/new-employee.service';
 import { Observable } from 'rxjs';
 import { EmployeeModel } from 'src/app/modules/models/interfaces/IEmployee';

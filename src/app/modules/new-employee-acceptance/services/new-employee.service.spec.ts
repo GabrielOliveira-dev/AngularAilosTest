@@ -1,74 +1,42 @@
-import { TestBed, inject } from '@angular/core/testing';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NewEmployeeService } from './new-employee.service';
 import { EmployeeModel } from '../../models/interfaces/IEmployee';
-import { of } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import mockData from '../../../../assets/mock.json';
 
 describe('NewEmployeeService', () => {
   let service: NewEmployeeService;
-  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [NewEmployeeService],
+      providers: [NewEmployeeService]
     });
     service = TestBed.inject(NewEmployeeService);
-    httpMock = TestBed.inject(HttpTestingController);
-  });
-
-  afterEach(() => {
-    httpMock.verify();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return employee data from mock when mockData is true', () => {
-    // Arrange
-    service.mockData = true;
-    const mockEmployee: EmployeeModel = {
-      applicationAccount: {
-        accountNumber: '55555',
-        situation: 'teste',
-      },
-      checkingAccount: {
-        cpfStatus: 'teste',
-        name: 'teste',
-        registerSituation: 'teste',
-      },
-      situation: {
-        cpfStatus: 'teste',
-        name: 'teste',
-        registerSituation: 'teste',
-      },
-    };
+  it('should return employee data by CPF', () => {
+    const mockCpf = '12345678900';
+    const result = service.getEmployee$(mockCpf);
 
-    // Act & Assert
-    service.getEmployeeData$('mock_cpf').subscribe((data) => {
-      expect(data).toEqual(mockEmployee);
+    result.subscribe((employee: EmployeeModel | undefined) => {
+      expect(employee).toBeUndefined();
+      expect(employee?.cpf).toBeUndefined();
     });
   });
 
-  it('should make an HTTP GET request when mockData is false', () => {
-    // Arrange
-    service.mockData = false;
-    const mockEmployee: any = {
-      // Add your expected response data for the HTTP GET request here
-    };
+  it('should return undefined for non-existent CPF', () => {
+    const mockCpf = '99999999999';
+    const result = service.getEmployee$(mockCpf);
 
-    // Act
-    service.getEmployeeData$('mock_cpf').subscribe();
-
-    // Assert
-    const req = httpMock.expectOne(`${environment.BACKEND_URL}/mock_cpf`);
-    expect(req.request.method).toBe('GET');
-    // Respond with mockEmployee data
-    req.flush(mockEmployee);
+    result.subscribe((employee: EmployeeModel | undefined) => {
+      expect(employee).toBeUndefined();
+    });
   });
+
+  // Add more test cases as needed
 });

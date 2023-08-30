@@ -14,12 +14,6 @@ export class AppComponent implements OnInit {
   constructor() {}
   ngOnInit() {}
 
-  // _newAdmission!: boolean
-
-  // @Input() set newAdmission(val: boolean) {
-  //   this._newAdmission = val
-  // }
-
 
 }
 
