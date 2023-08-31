@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewEmployeeAcceptanceModule } from './modules/new-employee-acceptance/new-employee-acceptance.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -18,7 +17,6 @@ import { NgxMaskModule } from 'ngx-mask';
     AppRoutingModule,
     SharedModule,
     BrowserAnimationsModule,
-    NewEmployeeAcceptanceModule,
     ToastrModule.forRoot({
       maxOpened: 3,
       timeOut: 1000
