@@ -7,7 +7,6 @@ import { EmployeeModel } from 'src/app/modules/models/interfaces/IEmployee';
 import { ToastrService } from 'ngx-toastr';
 
 // Mock for NewEmployeeService
-// Mock for NewEmployeeService
 class MockNewEmployeeService {
   getEmployee$(cpf: string): Observable<EmployeeModel | undefined> {
     if (cpf === '12345678900') {
@@ -37,7 +36,7 @@ describe('NewEmplAcceptanceComponent', () => {
   let newEmplService: NewEmployeeService;
   let toastr: ToastrService;
 
-  beforeEach(() => {
+  beforeEach( () => {
     TestBed.configureTestingModule({
       declarations: [NewEmplAcceptanceComponent],
       providers: [
