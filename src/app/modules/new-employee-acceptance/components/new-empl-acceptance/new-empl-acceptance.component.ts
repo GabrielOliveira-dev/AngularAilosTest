@@ -38,7 +38,7 @@ cpfExist: boolean = false;
           this.toastr.error("CPF não encontrado")
           throw new Error("CPF não encontrado")
           
-        }console.log(data) 
+        } 
       },
       error: (error) => { console.log(error)}
     })

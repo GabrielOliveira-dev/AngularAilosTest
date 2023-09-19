@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NewEmployeeService } from '../../../services/new-employee.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,8 +14,14 @@ export class NewEmployeeInputComponent implements OnInit {
   newEmplForm!: FormGroup
   @Input() cpfExist!: boolean;
 
+    
 
-  constructor(private fb: FormBuilder) { }
+
+  constructor(
+    private fb: FormBuilder,
+    private emplService: NewEmployeeService,
+    private toastr: ToastrService
+      ) { }
 
   @Output() cpfInput = new EventEmitter<string>();
 
@@ -21,11 +29,21 @@ export class NewEmployeeInputComponent implements OnInit {
     this.newEmplForm = this.fb.group({
       cpf: [null, [Validators.required]]
     })
+
+    
   }
 
   onSubmit() {
-    if(this.newEmplForm.valid) {
-      this.cpfInput.emit(this.newEmplForm.controls['cpf'].value)
+
+    const cpfValue = this.newEmplForm.controls['cpf'].value;
+    
+    const isValidCPF = this.emplService.isValidCPF(cpfValue)
+
+    if(this.newEmplForm.valid && isValidCPF) {
+      this.cpfInput.emit(cpfValue)
+    } else {
+      this.toastr.error("CPF inválido")
+      throw new Error("CPF inválido")
     }
   }
 
