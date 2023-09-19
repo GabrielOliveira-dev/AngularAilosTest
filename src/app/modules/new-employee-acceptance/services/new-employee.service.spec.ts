@@ -1,17 +1,19 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NewEmployeeService } from './new-employee.service';
-import { EmployeeModel } from '../../models/interfaces/IEmployee';
-import mockData from '../../../../assets/mock.json';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('NewEmployeeService', () => {
   let service: NewEmployeeService;
 
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+
+      imports: [HttpClientModule]
+    }).compileComponents();
+  });
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [NewEmployeeService]
-    });
+    TestBed.configureTestingModule({});
     service = TestBed.inject(NewEmployeeService);
   });
 
@@ -19,24 +21,50 @@ describe('NewEmployeeService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return employee data by CPF', () => {
-    const mockCpf = '12345678900';
-    const result = service.getEmployee$(mockCpf);
+  it('should return an employee by CPF', (done) => {
+  const validCPF = '12345678909'; // CPF válido que existe no seu mockData
 
-    result.subscribe((employee: EmployeeModel | undefined) => {
-      expect(employee).toBeUndefined();
-      expect(employee?.cpf).toBeUndefined();
-    });
+  const employee = service.getEmployee$(validCPF);
+
+  employee.subscribe((result) => {
+    // Verifique se o objeto retornado não é indefinido
+    expect(result).not.toBeUndefined();
+
+    if (result) {
+      // Verifique se o CPF no objeto retornado corresponde ao CPF fornecido
+      expect(result.cpf).toEqual(validCPF);
+      // Outros testes que você desejar fazer com os dados retornados
+
+      done(); // Chame done() para indicar que o teste está completo
+    }
   });
+});
+
+  
 
   it('should return undefined for non-existent CPF', () => {
-    const mockCpf = '99999999999';
-    const result = service.getEmployee$(mockCpf);
+    const cpf = '00000000000'; // CPF que não existe no seu mockData
 
-    result.subscribe((employee: EmployeeModel | undefined) => {
-      expect(employee).toBeUndefined();
+    const employee = service.getEmployee$(cpf);
+
+    employee.subscribe((result) => {
+      expect(result).toBeUndefined();
     });
   });
 
-  // Add more test cases as needed
+  it('should validate a valid CPF', () => {
+    const validCPF = '12345678909';
+
+    const isValid = service.isValidCPF(validCPF);
+
+    expect(isValid).toBeTrue();
+  });
+
+  it('should invalidate an invalid CPF', () => {
+    const invalidCPF = '00000000000';
+
+    const isValid = service.isValidCPF(invalidCPF);
+
+    expect(isValid).toBeFalse();
+  });
 });

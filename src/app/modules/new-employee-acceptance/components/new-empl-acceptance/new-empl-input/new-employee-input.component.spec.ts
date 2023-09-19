@@ -1,58 +1,55 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NewEmployeeInputComponent } from './new-employee-input.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-@Component({ selector: 'app-form', template: '' })
-class MockFormComponent {
-  @Input() formGroup!: FormGroup;
-}
+import { FormBuilder } from '@angular/forms';
+import { NewEmployeeService } from '../../../services/new-employee.service';
+import { ToastrService, ToastrModule  } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('NewEmployeeInputComponent', () => {
-  let fixture: ComponentFixture<NewEmployeeInputComponent>;
   let component: NewEmployeeInputComponent;
+  let fixture: ComponentFixture<NewEmployeeInputComponent>;
+  let emplService: NewEmployeeService;
+  let toastr: ToastrService;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [NewEmployeeInputComponent],
+      providers: [FormBuilder, NewEmployeeService, ToastrService],
+      imports: [HttpClientModule, ToastrModule.forRoot()]
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [NewEmployeeInputComponent, MockFormComponent],
-      providers: [FormBuilder]
-    }).compileComponents();
-
     fixture = TestBed.createComponent(NewEmployeeInputComponent);
     component = fixture.componentInstance;
+    emplService = TestBed.inject(NewEmployeeService);
+    toastr = TestBed.inject(ToastrService);
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize newEmplForm with cpf input', () => {
-    component.ngOnInit();
-    expect(component.newEmplForm).toBeDefined();
-    expect(component.newEmplForm.get('cpf')).toBeDefined();
-  });
+  it('should emit cpfInput event with valid CPF', () => {
+    spyOn(emplService, 'isValidCPF').and.returnValue(true);
+    spyOn(component.cpfInput, 'emit');
 
-  it('should emit cpfInput event on valid form submission', () => {
-    const mockCpf = '12345678900';
-    component.cpfExist = false;
-    component.ngOnInit();
-
-    const emitSpy = spyOn(component.cpfInput, 'emit');
-    component.newEmplForm.patchValue({ cpf: mockCpf });
+    component.newEmplForm.controls['cpf'].setValue('12345678909');
     component.onSubmit();
 
-    expect(emitSpy).toHaveBeenCalledWith(mockCpf);
+    expect(emplService.isValidCPF).toHaveBeenCalledWith('12345678909');
+    expect(component.cpfInput.emit).toHaveBeenCalledWith('12345678909');
   });
 
-  it('should not emit cpfInput event on invalid form submission', () => {
-    component.cpfExist = false;
-    component.ngOnInit();
+  it('should show error toastr and throw error with invalid CPF', () => {
+    spyOn(emplService, 'isValidCPF').and.returnValue(false);
+    spyOn(toastr, 'error');
 
-    const emitSpy = spyOn(component.cpfInput, 'emit');
-    component.onSubmit();
+    component.newEmplForm.controls['cpf'].setValue('invalidCPF');
+    expect(() => component.onSubmit()).toThrowError('CPF inválido');
 
-    expect(emitSpy).not.toHaveBeenCalled();
+    expect(emplService.isValidCPF).toHaveBeenCalledWith('invalidCPF');
+    expect(toastr.error).toHaveBeenCalledWith('CPF inválido');
   });
-
-  // Add more test cases if needed
 });
